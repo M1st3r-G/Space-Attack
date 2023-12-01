@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/EnemyData")]
@@ -9,10 +6,13 @@ public class EnemyStats: ScriptableObject
     [SerializeField] private Sprite image;
     [SerializeField] private float defaultSpeed;
     [SerializeField] private float defaultShootingSpeed;
+    [SerializeField, Range(0f,1f)] private float shootingProbability;
     [SerializeField] private float defaultLineTimer;
+    
 
-    public Sprite getImage() => image;
-    public float getDefaultSpeed() => defaultSpeed;
-    public float getDefaultShootingSpeed() => defaultShootingSpeed;
-    public float getDefaultLineTimer() => defaultLineTimer;
+    public Sprite GetImage() => image;
+    public float GetDefaultSpeed() => defaultSpeed;
+    public float GetDefaultShootingSpeed() => defaultShootingSpeed;
+    public float GetDefaultLineTimer() => defaultLineTimer;
+    public float GetshootingProbability() => shootingProbability;
 }

@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
@@ -12,7 +13,8 @@ public class Enemy : MonoBehaviour
     //Params
     //Temps
     private float startingX;
-    private float lineTimer = 0f;
+    private float lineTimer;
+    private float shootingTimer;
     //Publics
     public static event Action<Enemy> OnHit;
     public GameObject enemyBullet;
@@ -27,8 +29,8 @@ public class Enemy : MonoBehaviour
     public void setStats(EnemyStats newStats)
     {
         stats = newStats;
-        GetComponent<SpriteRenderer>().sprite = newStats.getImage();
-        rb.velocity = rb.velocity.normalized * newStats.getDefaultSpeed();
+        GetComponent<SpriteRenderer>().sprite = newStats.GetImage();
+        rb.velocity = rb.velocity.normalized * newStats.GetDefaultSpeed();
     }
 
     private void FixedUpdate()
@@ -38,13 +40,22 @@ public class Enemy : MonoBehaviour
             rb.velocity *= -1;
         }
 
-        lineTimer += Time.deltaTime;
-        if (lineTimer > stats.getDefaultShootingSpeed())
+        shootingTimer += Time.deltaTime;
+        if (shootingTimer > stats.GetDefaultShootingSpeed())
         {
-            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            if (Random.Range(0f, 1f) < stats.GetshootingProbability())
+            {
+                Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            }
+            shootingTimer = 0f;
+        }
+
+        lineTimer += Time.deltaTime;
+        if (lineTimer > stats.GetDefaultLineTimer())
+        {
+            transform.position -= 0.5f * Vector3.down;
             lineTimer = 0f;
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
