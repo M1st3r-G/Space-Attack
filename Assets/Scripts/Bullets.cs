@@ -27,23 +27,6 @@ public class Bullets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Divided because of the Point System for later
-        
-        if (other.gameObject.CompareTag("EnemyZone"))
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        if (CompareTag("PlayerZone"))
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
         Destroy(gameObject);
     }
 }

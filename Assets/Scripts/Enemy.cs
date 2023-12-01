@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,7 +14,8 @@ public class Enemy : MonoBehaviour
     private float startingX;
     private float lineTimer = 0f;
     //Publics
-    public static event Action<Enemy> OnHit; 
+    public static event Action<Enemy> OnHit;
+    public GameObject enemyBullet;
 
     private void Awake()
     {
@@ -39,13 +41,13 @@ public class Enemy : MonoBehaviour
         lineTimer += Time.deltaTime;
         if (lineTimer > stats.getDefaultShootingSpeed())
         {
-            //TODO ADD BULLET;
+            Instantiate(enemyBullet, transform.position, Quaternion.identity);
             lineTimer = 0f;
         }
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         gameObject.SetActive(false);
         OnHit?.Invoke(this);
