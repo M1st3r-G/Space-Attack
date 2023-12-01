@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da845fd163db33f4d8304e09e86d13e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 8668812296248284425, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
-  shoot: {fileID: -952859068208833647, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
+  movement: {fileID: 7750783468444634963, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
+  shoot: {fileID: -6610828042698446550, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
   speed: 3
   yOffset: 0.8
   ShootCooldown: 0.5

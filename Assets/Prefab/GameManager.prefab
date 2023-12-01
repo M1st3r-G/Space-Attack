@@ -55,3 +55,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 636a7cf3917a58d4aa948f5e755187cc, type: 2}
   - {fileID: 11400000, guid: 2ea1b657276e71e4a9cd48fa9b32802e, type: 2}
   - {fileID: 11400000, guid: 4c33f81285de71649bfee0f002bc889c, type: 2}
+  maxLife: 3

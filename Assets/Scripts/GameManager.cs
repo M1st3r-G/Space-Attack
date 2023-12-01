@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float padding;
     [SerializeField, Range(1,3)] private int typeToSpawn;
     [SerializeField] private EnemyStats[] types;
+    [SerializeField] private int maxLife;
     //Temps
     private List<Enemy> allEnemies;
     private int _points;
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
     //Publics
     private static GameManager _instance;
     public static GameManager Instance => _instance;
+
+    public static event Action<int> OnGameOver; 
      
     private void Awake()
     {
@@ -55,7 +60,7 @@ public class GameManager : MonoBehaviour
         
         allEnemies = new List<Enemy>();
         Points = 0;
-        Life = 3;
+        Life = maxLife;
         curStrength = 1;
         SpawnEnemies(1,false);
         
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour
     private void OnPlayerHitMethod()
     {
         Life--;
+        if(Life < 1) OnGameOver?.Invoke(Points);
     }
 
     private bool AnyEnemyActive()
