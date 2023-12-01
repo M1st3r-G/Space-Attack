@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,16 +13,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 10f; //10f fürs Debugging
     [SerializeField] private float yOffset = 0.8f;
     [SerializeField] private float ShootCooldown;
+    [SerializeField] private float invisTimer;
     //Temps
     private float input;
     private bool canShoot;
+    private bool invinvible;
     //Publics
     public GameObject playerBullet;
+    public static event Action OnPlayerHit; 
      
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         canShoot = true;
+        invinvible = false;
     }
 
     private void OnEnable()
@@ -52,6 +57,26 @@ public class Player : MonoBehaviour
         StartCoroutine(nameof(Reload));
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (invinvible) return;
+        OnPlayerHit?.Invoke();
+        invinvible = true;
+        StartCoroutine(nameof(HealingTime));
+    }
+
+    private IEnumerator HealingTime()
+    {
+        float timer = 0f;
+
+        while (timer < invisTimer)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        invinvible = false;
+    }
     private IEnumerator Reload()
     {
         float timer = 0f;

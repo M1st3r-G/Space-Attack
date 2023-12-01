@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
         _instance = this;
         
         allEnemies = new List<Enemy>();
-        Points = Life = 0;
+        Points = 0;
+        Life = 3;
         SpawnEnemies();
         
         DontDestroyOnLoad(this);
@@ -65,11 +66,14 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy.OnHit += OnHitMethod;
+        Player.OnPlayerHit += OnPlayerHitMethod;
     }
 
     private void OnDisable()
     {
         Enemy.OnHit -= OnHitMethod;
+        Player.OnPlayerHit -= OnPlayerHitMethod;
+
     }
 
     private void SpawnEnemies()
@@ -92,5 +96,10 @@ public class GameManager : MonoBehaviour
     {
         allEnemies.Remove(e);
         Points++;
+    }
+
+    private void OnPlayerHitMethod()
+    {
+        Life--;
     }
 }
