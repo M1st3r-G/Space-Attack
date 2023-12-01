@@ -164,7 +164,7 @@ MonoBehaviour:
   movement: {fileID: 7750783468444634963, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
   shoot: {fileID: -6610828042698446550, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
   speed: 3
-  yOffset: 0.8
+  yOffset: 0.5
   ShootCooldown: 0.5
   invisTimer: 0.5
   playerBullet: {fileID: 3553346205418886274, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
