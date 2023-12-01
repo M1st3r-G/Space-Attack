@@ -174,3 +174,4 @@ MonoBehaviour:
   movement: {fileID: 8668812296248284425, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
   shoot: {fileID: -952859068208833647, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
   speed: 3
+  playerBullet: {fileID: 3553346205418886274, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
