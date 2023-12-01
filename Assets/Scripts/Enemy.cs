@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         gameObject.SetActive(false);
         OnHit?.Invoke(this);

@@ -468,6 +468,14 @@ PrefabInstance:
       propertyPath: points
       value: 
       objectReference: {fileID: 1085063994}
+    - target: {fileID: 696075731045154897, guid: 485ddebdbe06cfc4183b4c55c7b6bfa4, type: 3}
+      propertyPath: lifeText
+      value: 
+      objectReference: {fileID: 1442997189}
+    - target: {fileID: 696075731045154897, guid: 485ddebdbe06cfc4183b4c55c7b6bfa4, type: 3}
+      propertyPath: pointsText
+      value: 
+      objectReference: {fileID: 1085063994}
     - target: {fileID: 1281445675783248961, guid: 485ddebdbe06cfc4183b4c55c7b6bfa4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
