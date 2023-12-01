@@ -17,3 +17,4 @@ MonoBehaviour:
   defaultShootingSpeed: 1
   shootingProbability: 0.75
   defaultLineTimer: 5
+  bulletSpeed: 0.75

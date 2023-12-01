@@ -171,4 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8817f9ccf3a9e048a7b5f69f0e7882f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.75
   isPlayerBullet: 1

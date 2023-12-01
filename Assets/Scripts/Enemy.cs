@@ -39,18 +39,24 @@ public class Enemy : MonoBehaviour
         if (shootingTimer > stats.GetDefaultShootingSpeed())
         {
             shootingTimer = 0f;
-            if (Random.Range(0f, 1f) > stats.GetShootingProbability()) return;
-            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            Shoot();
         }
 
         lineTimer += Time.deltaTime;
         if (lineTimer > stats.GetDefaultLineTimer())
         {
-            transform.position -= 0.5f * Vector3.down;
+            transform.position -= 0.5f * Vector3.up;
             lineTimer = 0f;
         }
     }
 
+    private void Shoot()
+    {
+        if (Random.Range(0f, 1f) > stats.GetShootingProbability()) return;
+        var bullet = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Bullets>();
+        bullet.SetSpeed(stats.GetBulletSpeed());
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         gameObject.SetActive(false);
