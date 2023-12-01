@@ -16,16 +16,19 @@ public class Player : MonoBehaviour
     [SerializeField] private float invisTimer;
     //Temps
     private bool canShoot;
-    private bool invinvible;
+    private bool invincible;
     //Publics
     public GameObject playerBullet;
+    public GameObject playerExplosion;
+    
+    //TODO: Player dies and explodes in many pieces >:3 Muhahaha
     public static event Action OnPlayerHit; 
      
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         canShoot = true;
-        invinvible = false;
+        invincible = false;
     }
 
     private void OnEnable()
@@ -57,9 +60,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (invinvible) return;
+        if (invincible) return;
         OnPlayerHit?.Invoke();
-        invinvible = true;
+        invincible = true;
+        Instantiate(playerExplosion, transform.position, Quaternion.identity);
         StartCoroutine(nameof(HealingTime));
     }
 
@@ -71,7 +75,7 @@ public class Player : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        invinvible = false;
+        invincible = false;
     }
     private IEnumerator Reload()
     {

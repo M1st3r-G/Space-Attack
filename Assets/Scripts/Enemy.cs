@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     //Publics
     public static event Action<Enemy> OnHit;
     public GameObject enemyBullet;
+    public GameObject enemyExplosion;
 
     private void Awake()
     {
@@ -60,6 +61,10 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         gameObject.SetActive(false);
+        Instantiate(enemyExplosion, transform.position, Quaternion.identity);
+        
+        //TODO: Add Timer to Destroy the Object "enemyExplosion"
+        
         OnHit?.Invoke(this);
     }
 }

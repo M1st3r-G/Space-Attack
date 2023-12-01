@@ -173,3 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
   enemyBullet: {fileID: 2864584509696332175, guid: ba6e2de0e7daea84f8b45d469b7bf1da, type: 3}
+  enemyExplosion: {fileID: 3517767168776488546, guid: 16b60dcac4eaafb4a8862162ecd99bb8, type: 3}
