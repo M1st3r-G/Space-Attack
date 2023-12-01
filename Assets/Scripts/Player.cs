@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 10f; //10f fürs Debugging
     //Temps
     private float input;
+    private Vector3 abovePlayer;
     //Publics
     public GameObject playerBullet;
     
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        abovePlayer = transform.position;
+        abovePlayer.y += 1;
     }
 
     private void OnEnable()
@@ -43,6 +46,6 @@ public class Player : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext ctx)
     {
-        Instantiate(playerBullet, transform.position, Quaternion.identity);
+        Instantiate(playerBullet, abovePlayer, Quaternion.identity);
     }
 }
