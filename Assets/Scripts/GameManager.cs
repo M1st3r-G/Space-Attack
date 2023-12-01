@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
                 GameObject tmp = Instantiate(enemy, pos , Quaternion.identity);
                 var deb = tmp.GetComponent<Enemy>();
                 deb.setStats(types[typeToSpawn]);
-                print(deb.name);
                 allEnemies.Add(deb);
             }
         }
@@ -91,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void OnHitMethod(Enemy e)
     {
-        throw new NotImplementedException();
+        allEnemies.Remove(e);
+        Points++;
     }
 }
