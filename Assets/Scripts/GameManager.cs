@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float padding;
     [SerializeField, Range(1,3)] private int typeToSpawn;
     [SerializeField] private EnemyStats[] types;
-    
     //Temps
     private List<Enemy> allEnemies;
     private int _points;
@@ -30,7 +28,6 @@ public class GameManager : MonoBehaviour
             _points = value;
         }
     }
-
     private int _life;
     private int Life
     {
@@ -41,7 +38,8 @@ public class GameManager : MonoBehaviour
             _life = value;
         }
     }
-    
+
+    private float curStrength;
     //Publics
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -58,7 +56,8 @@ public class GameManager : MonoBehaviour
         allEnemies = new List<Enemy>();
         Points = 0;
         Life = 3;
-        SpawnEnemies();
+        curStrength = 1;
+        SpawnEnemies(1,false);
         
         DontDestroyOnLoad(this);
     }
@@ -76,17 +75,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemies(int str, bool random)
     {
         var offset = (Vector2)(grid - new Vector2Int(1,1)) * (1 + padding) / 2;
         for (int i = 0; i < grid.x; i++)
         {
             for (int j = 0; j < grid.y; j++)
             {
-                Vector2 pos = new Vector2(i*(1+padding), j*(1+padding)) - offset;
+                Vector2 pos = new Vector2(i*(1+padding), j*(1+padding)) - offset + spawnPostion;
                 GameObject tmp = Instantiate(enemy, pos , Quaternion.identity);
                 var deb = tmp.GetComponent<Enemy>();
-                deb.setStats(types[typeToSpawn]);
+                deb.SetStats(types[random ? Random.Range(1, Mathf.Clamp(str + 1, 1, 3)) : str]);
                 allEnemies.Add(deb);
             }
         }
@@ -96,10 +95,31 @@ public class GameManager : MonoBehaviour
     {
         allEnemies.Remove(e);
         Points++;
+        if (!AnyEnemyActive())
+        {
+            LoadNextScene();
+        }
     }
 
+    private void LoadNextScene()
+    {
+        curStrength += 0.5f;
+        foreach (Enemy e in allEnemies)
+        {   
+            Destroy(e.gameObject);
+        }
+        allEnemies = new List<Enemy>();
+        SpawnEnemies((int)curStrength, curStrength%1 != 0);
+        if (curStrength == 4) SceneManager.LoadScene(0);
+    }
+    
     private void OnPlayerHitMethod()
     {
         Life--;
+    }
+
+    private bool AnyEnemyActive()
+    {
+        return allEnemies.Any(e => e.gameObject.activeSelf);
     }
 }

@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float ShootCooldown;
     [SerializeField] private float invisTimer;
     //Temps
-    private float input;
     private bool canShoot;
     private bool invinvible;
     //Publics
@@ -45,8 +44,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        input = movement.action.ReadValue<float>();
-        rb.velocity = new Vector2(input * speed, 0);
+        rb.velocity = new Vector2(movement.action.ReadValue<float>() * speed, 0);
     }
 
     private void Shoot(InputAction.CallbackContext ctx)
@@ -68,25 +66,21 @@ public class Player : MonoBehaviour
     private IEnumerator HealingTime()
     {
         float timer = 0f;
-
         while (timer < invisTimer)
         {
             timer += Time.deltaTime;
             yield return null;
         }
-
         invinvible = false;
     }
     private IEnumerator Reload()
     {
         float timer = 0f;
-
         while (timer < ShootCooldown)
         {
             timer += Time.deltaTime;
             yield return null;
         }
-
         canShoot = true;
     }
 }

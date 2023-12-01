@@ -1,5 +1,4 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +8,6 @@ public class Enemy : MonoBehaviour
     //ComponentReferences
     private Rigidbody2D rb;
     [SerializeField] private EnemyStats stats;
-
     //Params
     //Temps
     private float startingX;
@@ -26,7 +24,7 @@ public class Enemy : MonoBehaviour
         startingX = transform.position.x;
     }
 
-    public void setStats(EnemyStats newStats)
+    public void SetStats(EnemyStats newStats)
     {
         stats = newStats;
         GetComponent<SpriteRenderer>().sprite = newStats.GetImage();
@@ -35,19 +33,14 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(transform.position.x - startingX) > 2)
-        {
-            rb.velocity *= -1;
-        }
+        if (Mathf.Abs(transform.position.x - startingX) > 2) rb.velocity *= -1;
 
         shootingTimer += Time.deltaTime;
         if (shootingTimer > stats.GetDefaultShootingSpeed())
         {
-            if (Random.Range(0f, 1f) < stats.GetshootingProbability())
-            {
-                Instantiate(enemyBullet, transform.position, Quaternion.identity);
-            }
             shootingTimer = 0f;
+            if (Random.Range(0f, 1f) > stats.GetShootingProbability()) return;
+            Instantiate(enemyBullet, transform.position, Quaternion.identity);
         }
 
         lineTimer += Time.deltaTime;

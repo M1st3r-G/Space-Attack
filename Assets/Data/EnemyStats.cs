@@ -14,5 +14,5 @@ public class EnemyStats: ScriptableObject
     public float GetDefaultSpeed() => defaultSpeed;
     public float GetDefaultShootingSpeed() => defaultShootingSpeed;
     public float GetDefaultLineTimer() => defaultLineTimer;
-    public float GetshootingProbability() => shootingProbability;
+    public float GetShootingProbability() => shootingProbability;
 }

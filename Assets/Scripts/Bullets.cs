@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,14 +11,10 @@ public class Bullets : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isPlayerBullet)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y + 0.01f);
-            return;
-        }
-        rb.velocity = new Vector2(0, rb.velocity.y - 0.01f);
+        int dir = isPlayerBullet ? 1 : -1;
+        rb.velocity = new Vector2(0, rb.velocity.y + dir * 0.01f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
