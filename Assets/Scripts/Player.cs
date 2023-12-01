@@ -1,8 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    //ComponentReferences
+    private Rigidbody2D rb;
+    [SerializeField] InputActionReference movement;
+    [SerializeField] InputActionReference shoot;
+    //Params
+    [SerializeField] float speed = 10f; //10f fürs Debugging
+    //Temps
+    private float input;
+    //Publics
     
+    //TODO: Player Movement
+     
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        movement.action.Enable();
+        shoot.action.Enable();
+        shoot.action.performed += Shoot;
+    }
+
+    private void OnDisable()
+    {
+        movement.action.Disable();
+        shoot.action.performed -= Shoot;
+        shoot.action.Disable();
+    }
+
+    private void Update()
+    {
+        input = movement.action.ReadValue<float>();
+        rb.velocity = new Vector2(input * speed, 0);
+    }
+
+    private void Shoot(InputAction.CallbackContext ctx)
+    {
+        print("shot");
+    }
 }
