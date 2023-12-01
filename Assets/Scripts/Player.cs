@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference shoot;
     //Params
     [SerializeField] private float speed = 10f; //10f fürs Debugging
-    [SerializeField] private float yOffset = 0.8f;
+    [SerializeField] private float yOffset = 0.5f;
     [SerializeField] private float ShootCooldown;
     [SerializeField] private float invisTimer;
     //Temps
