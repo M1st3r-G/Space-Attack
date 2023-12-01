@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.right;
         startingX = transform.position.x;
     }
 
