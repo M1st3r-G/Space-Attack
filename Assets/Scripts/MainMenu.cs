@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject[] text;
     public bool start;
     public bool quit;
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,5 +21,38 @@ public class MainMenu : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Destroy(text[0]);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Destroy(text[1]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(text[2]);
+        }
+
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        
+        
     }
 }
