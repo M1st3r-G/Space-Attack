@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     //Temps
     private float input;
     //Publics
+    public GameObject playerBullet;
     
-    //TODO: Player Movement
+    //TODO: Player Bullet
      
     private void Awake()
     {
@@ -38,10 +39,12 @@ public class Player : MonoBehaviour
     {
         input = movement.action.ReadValue<float>();
         rb.velocity = new Vector2(input * speed, 0);
+        
+        
     }
 
     private void Shoot(InputAction.CallbackContext ctx)
     {
-        print("shot");
+        Instantiate(playerBullet, transform.position, Quaternion.identity);
     }
 }
