@@ -7,7 +7,9 @@ public class EnemyController : MonoBehaviour
 {
     //ComponentReferences
     private Rigidbody2D rb;
+
     [SerializeField] private EnemyStats stats;
+
     //Params
     //Temps
     private float timer = 1f;
@@ -15,9 +17,14 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<SpriteRenderer>().sprite = stats.getImage();
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.right * stats.getDefaultSpeed();
+    }
+
+    public void setStats(EnemyStats newStats)
+    {
+        stats = newStats;
+        GetComponent<SpriteRenderer>().sprite = newStats.getImage();
+        rb.velocity = rb.velocity.normalized * newStats.getDefaultSpeed();
     }
 
     private void FixedUpdate()
