@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7286871244380407765
+--- !u!1 &8236940147876517851
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6586261095024304665}
-  - component: {fileID: 7130375190145826513}
+  - component: {fileID: 1281445675783248961}
+  - component: {fileID: 696075731045154897}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6586261095024304665
+--- !u!4 &1281445675783248961
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286871244380407765}
+  m_GameObject: {fileID: 8236940147876517851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7130375190145826513
+--- !u!114 &696075731045154897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286871244380407765}
+  m_GameObject: {fileID: 8236940147876517851}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90c7644d1a0f6c14c8ec99a6be6100d1, type: 3}
@@ -46,5 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2733250629544459656, guid: b2ccc728dd333cb42aeed1ab0f57b7d7, type: 3}
   grid: {x: 5, y: 2}
-  spawnPostion: {x: 0, y: 1}
+  spawnPostion: {x: 0, y: 0}
   padding: 0.5
+  typeToSpawn: 0
+  types:
+  - {fileID: 11400000, guid: 636a7cf3917a58d4aa948f5e755187cc, type: 2}
+  - {fileID: 11400000, guid: 2ea1b657276e71e4a9cd48fa9b32802e, type: 2}
+  - {fileID: 11400000, guid: 4c33f81285de71649bfee0f002bc889c, type: 2}
