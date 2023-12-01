@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //ComponentReferences
+    private Rigidbody2D rb;
+    //Params
+    [SerializeField] private float speed;
+    //Temps
+    private float timer = 1f;
+    //Publics
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.right * speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        timer += Time.deltaTime;
+        if (timer < 2) return;
+        rb.velocity *= -1;
+        timer = 0;
     }
 }
