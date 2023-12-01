@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         gameObject.SetActive(false);
-        Instantiate(enemyExplosion, transform.position, Quaternion.identity);
+        Instantiate(stats.getParticles(), transform.position, Quaternion.identity);
         OnHit?.Invoke(this);
     }
 }

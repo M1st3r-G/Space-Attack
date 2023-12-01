@@ -18,3 +18,4 @@ MonoBehaviour:
   shootingProbability: 1
   defaultLineTimer: 8
   bulletSpeed: 0.5
+  Particles: {fileID: 6193677517274526240, guid: d5a59999a4d1cf44595341a786b5d9c1, type: 3}
