@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,21 +6,22 @@ public class Player : MonoBehaviour
 {
     //ComponentReferences
     private Rigidbody2D rb;
-    [SerializeField] InputActionReference movement;
-    [SerializeField] InputActionReference shoot;
+    [SerializeField] private InputActionReference movement;
+    [SerializeField] private InputActionReference shoot;
     //Params
-    [SerializeField] float speed = 10f; //10f fürs Debugging
+    [SerializeField] private float speed = 10f; //10f fürs Debugging
+    [SerializeField] private float yOffset = 0.8f;
+    [SerializeField] private float ShootCooldown;
     //Temps
     private float input;
-    private Vector3 abovePlayer;
+    private bool canShoot;
     //Publics
     public GameObject playerBullet;
-    
-    
      
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        canShoot = true;
     }
 
     private void OnEnable()
@@ -36,18 +38,30 @@ public class Player : MonoBehaviour
         shoot.action.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         input = movement.action.ReadValue<float>();
         rb.velocity = new Vector2(input * speed, 0);
-        abovePlayer = transform.position;
-        abovePlayer.y += 0.8f;
     }
 
     private void Shoot(InputAction.CallbackContext ctx)
     {
-        //TODO: Maybe Add a Cooldown?
-        
-        Instantiate(playerBullet, abovePlayer, Quaternion.identity);
+        if (!canShoot) return;
+        Instantiate(playerBullet, transform.position + new Vector3(0,yOffset,0), Quaternion.identity);
+        canShoot = false;
+        StartCoroutine(nameof(Reload));
+    }
+
+    private IEnumerator Reload()
+    {
+        float timer = 0f;
+
+        while (timer < ShootCooldown)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        canShoot = true;
     }
 }
