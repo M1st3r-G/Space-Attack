@@ -19,14 +19,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemyStats[] types;
     
     //Temps
-    private List<EnemyController> allEnemies;
-    private int points
+    private List<Enemy> allEnemies;
+    private int _points;
+    private int Points
     {
-        set {pointsText.text = value.ToString(); }
+        get => _points;
+        set
+        {
+            pointsText.text = value.ToString();
+            _points = value;
+        }
     }
-    private int life
+
+    private int _life;
+    private int Life
     {
-        set {lifeText.text = value.ToString(); }
+        get => _life;
+        set
+        {
+            lifeText.text = value.ToString();
+            _life = value;
+        }
     }
     
     //Publics
@@ -42,11 +55,21 @@ public class GameManager : MonoBehaviour
         }
         _instance = this;
         
-        allEnemies = new List<EnemyController>();
-        points = life = 0;
+        allEnemies = new List<Enemy>();
+        Points = Life = 0;
         SpawnEnemies();
         
         DontDestroyOnLoad(this);
+    }
+
+    private void OnEnable()
+    {
+        Enemy.OnHit += OnHitMethod;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnHit -= OnHitMethod;
     }
 
     private void SpawnEnemies()
@@ -58,11 +81,16 @@ public class GameManager : MonoBehaviour
             {
                 Vector2 pos = new Vector2(i*(1+padding), j*(1+padding)) - offset;
                 GameObject tmp = Instantiate(enemy, pos , Quaternion.identity);
-                var deb = tmp.GetComponent<EnemyController>();
+                var deb = tmp.GetComponent<Enemy>();
                 deb.setStats(types[typeToSpawn]);
                 print(deb.name);
                 allEnemies.Add(deb);
             }
         }
+    }
+
+    private void OnHitMethod(Enemy e)
+    {
+        throw new NotImplementedException();
     }
 }

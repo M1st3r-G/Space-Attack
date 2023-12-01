@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     //ComponentReferences
     private Rigidbody2D rb;
@@ -14,6 +15,7 @@ public class EnemyController : MonoBehaviour
     //Temps
     private float timer = 1f;
     //Publics
+    public static event Action<Enemy> OnHit; 
 
     private void Awake()
     {
@@ -33,5 +35,10 @@ public class EnemyController : MonoBehaviour
         if (timer < 2) return;
         rb.velocity *= -1;
         timer = 0;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        OnHit?.Invoke(this);
     }
 }
