@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private TextMeshProUGUI pointsText;
+    [SerializeField] private InputActionReference quit;
     //Params
     [SerializeField] private Vector2Int grid;
     [SerializeField] private Vector2 spawnPostion;
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
     {
         Enemy.OnHit += OnHitMethod;
         Player.OnPlayerHit += OnPlayerHitMethod;
+        quit.action.Enable();
+        quit.action.performed += ctx => Application.Quit();
     }
 
     private void OnDisable()
