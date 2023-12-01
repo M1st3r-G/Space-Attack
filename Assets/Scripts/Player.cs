@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference shoot;
+    [SerializeField] private GameObject playerExplosion;
+    [SerializeField] private GameObject playerBullet;
     //Params
     [SerializeField] private float speed = 10f; //10f fürs Debugging
     [SerializeField] private float yOffset = 0.5f;
@@ -18,10 +20,6 @@ public class Player : MonoBehaviour
     private bool canShoot;
     private bool invincible;
     //Publics
-    public GameObject playerBullet;
-    public GameObject playerExplosion;
-    
-    //TODO: Player dies and explodes in many pieces >:3 Muhahaha
     public static event Action OnPlayerHit; 
      
     private void Awake()

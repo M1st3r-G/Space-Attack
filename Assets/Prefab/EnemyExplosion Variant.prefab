@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2382470003193842058, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382470003193842058, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.057952702
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382470003193842058, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51,18 +51,6 @@ PrefabInstance:
     - target: {fileID: 4015897546633619165, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
       propertyPath: m_Name
       value: EnemyExplosion Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151915927129131817, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151915927129131817, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.28627452
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151915927129131817, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

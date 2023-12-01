@@ -62,9 +62,6 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
         Instantiate(enemyExplosion, transform.position, Quaternion.identity);
-        
-        //TODO: Add Timer to Destroy the Object "enemyExplosion"
-        
         OnHit?.Invoke(this);
     }
 }
