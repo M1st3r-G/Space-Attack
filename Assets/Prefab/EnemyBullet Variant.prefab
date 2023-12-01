@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3170697525491222700, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
+      propertyPath: isPlayerBullet
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3553346205418886274, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
       propertyPath: m_Name
       value: EnemyBullet Variant

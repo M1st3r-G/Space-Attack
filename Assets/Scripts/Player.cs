@@ -39,8 +39,6 @@ public class Player : MonoBehaviour
     {
         input = movement.action.ReadValue<float>();
         rb.velocity = new Vector2(input * speed, 0);
-        
-        
     }
 
     private void Shoot(InputAction.CallbackContext ctx)

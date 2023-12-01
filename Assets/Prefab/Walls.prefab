@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1196516693571200113}
   m_Layer: 0
   m_Name: BulletDestroyerDown
-  m_TagString: Untagged
+  m_TagString: PlayerZone
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7603867236502414321}
   m_Layer: 0
   m_Name: BulletDestroyerUp
-  m_TagString: Untagged
+  m_TagString: EnemyZone
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
