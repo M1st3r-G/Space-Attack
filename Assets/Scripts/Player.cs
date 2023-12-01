@@ -15,13 +15,11 @@ public class Player : MonoBehaviour
     //Publics
     public GameObject playerBullet;
     
-    //TODO: Player Bullet
+    
      
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        abovePlayer = transform.position;
-        abovePlayer.y += 1;
     }
 
     private void OnEnable()
@@ -42,10 +40,14 @@ public class Player : MonoBehaviour
     {
         input = movement.action.ReadValue<float>();
         rb.velocity = new Vector2(input * speed, 0);
+        abovePlayer = transform.position;
+        abovePlayer.y += 0.8f;
     }
 
     private void Shoot(InputAction.CallbackContext ctx)
     {
+        //TODO: Maybe Add a Cooldown?
+        
         Instantiate(playerBullet, abovePlayer, Quaternion.identity);
     }
 }
