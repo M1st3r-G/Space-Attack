@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         allEnemies = new List<Enemy>();
         Points = 0;
         Life = maxLife;
-        curStrength = 0;
+        curStrength = 0.5f;
         SpawnEnemies(0,false);
         
         DontDestroyOnLoad(this);
