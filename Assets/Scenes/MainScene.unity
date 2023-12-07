@@ -495,10 +495,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 696075731045154897, guid: 485ddebdbe06cfc4183b4c55c7b6bfa4, type: 3}
-      propertyPath: maxLife
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 696075731045154897, guid: 485ddebdbe06cfc4183b4c55c7b6bfa4, type: 3}
       propertyPath: lifeText
       value: 
       objectReference: {fileID: 894764987}
