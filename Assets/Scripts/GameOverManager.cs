@@ -52,7 +52,7 @@ public class GameOverManager : MonoBehaviour
         LeaderBoardManager lbm = GameManager.Instance.GetComponent<LeaderBoardManager>();
         lbm.AddToBoard(GetName(), finalPoints);
         lbm.Save();
-        List<LeaderBoard.LeaderboardDataEntry> top5 =  lbm.GetTop5();
+        List<LeaderBoard.LeaderboardDataEntry> top5 =  lbm.GetTopN(5);
         string tmp = "";
         foreach (LeaderBoard.LeaderboardDataEntry entry in top5)
         {

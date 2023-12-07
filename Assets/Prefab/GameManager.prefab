@@ -70,3 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713f997a19fd4ac4ea08fc540483517f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leaderBoard:
+    leaderboardDataEntries: []
+  showNTopPlayers: 10

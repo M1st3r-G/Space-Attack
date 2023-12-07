@@ -5,7 +5,7 @@ public class LeaderBoardManager : MonoBehaviour
 {
     private const string LeaderboardDataKey = "LeaderboardData";
     [SerializeField] LeaderBoard leaderBoard;
-    
+    [SerializeField] private int showNTopPlayers;
     
     private void Awake()
     {
@@ -20,9 +20,9 @@ public class LeaderBoardManager : MonoBehaviour
         leaderBoard.AddToLeaderBoard(pName, points);
     }
 
-    public List<LeaderBoard.LeaderboardDataEntry> GetTop5()
+    public List<LeaderBoard.LeaderboardDataEntry> GetTopN(int n)
     {
-        return leaderBoard.GetTop5();
+        return leaderBoard.GetTopN(n);
     }
 
     public void Save()

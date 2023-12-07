@@ -26,9 +26,9 @@ public class LeaderBoard
         if (leaderboardDataEntries.Count > 10) leaderboardDataEntries.RemoveAt(10);
     }
     
-    public List<LeaderboardDataEntry> GetTop5()
+    public List<LeaderboardDataEntry> GetTopN(int n)
     {
-        return leaderboardDataEntries.GetRange(0, leaderboardDataEntries.Count < 5 ? leaderboardDataEntries.Count : 5);
+        return leaderboardDataEntries.GetRange(0, leaderboardDataEntries.Count < n ? leaderboardDataEntries.Count : n);
     }
     
     [Serializable]
