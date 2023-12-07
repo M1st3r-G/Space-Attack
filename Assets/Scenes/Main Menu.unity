@@ -476,7 +476,7 @@ MonoBehaviour:
   - {fileID: 1547529019}
   - {fileID: 1000655298}
   - {fileID: 412988612}
-  start: 0
+  start: 1
   quit: 0
 --- !u!1 &412988612
 GameObject:
