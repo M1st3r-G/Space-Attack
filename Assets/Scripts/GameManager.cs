@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         Points = 0;
         Life = maxLife;
         curStrength = 0;
-        SpawnEnemies(1,false);
+        SpawnEnemies(0,false);
         
         DontDestroyOnLoad(this);
     }
