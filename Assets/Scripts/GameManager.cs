@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies(int str, bool random)
     {
-        print($"{str} Enemis, but random = {random}");
         var offset = (Vector2)(grid - new Vector2Int(1,1)) * (1 + padding) / 2;
         for (int i = 0; i < grid.x; i++)
         {
@@ -103,7 +102,6 @@ public class GameManager : MonoBehaviour
 
     private void OnHitMethod(Enemy e)
     {
-        //allEnemies.Remove(e);
         Points++;
         if (!AnyEnemyActive())
         {
