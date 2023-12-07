@@ -94,7 +94,8 @@ public class GameManager : MonoBehaviour
                 Vector2 pos = new Vector2(i*(1+padding), j*(1+padding)) - offset + spawnPostion;
                 GameObject tmp = Instantiate(enemy, pos , Quaternion.identity);
                 var deb = tmp.GetComponent<Enemy>();
-                deb.SetStats(types[random ? Random.Range(0, Mathf.Clamp(str + 1, 0, 3)) : str - 1]);
+                int tmpInt = random ? Random.Range(0, str + 1) : str;
+                deb.SetStats(types[Mathf.Clamp(tmpInt, 0, 2)]);
                 allEnemies.Add(deb);
             }
         }
@@ -118,7 +119,6 @@ public class GameManager : MonoBehaviour
         }
         allEnemies = new List<Enemy>();
         SpawnEnemies((int)curStrength, curStrength%1 != 0);
-        if (curStrength == 4) SceneManager.LoadScene(0);
     }
     
     private void OnPlayerHitMethod()
