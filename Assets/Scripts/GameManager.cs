@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         allEnemies = new List<Enemy>();
         Points = 0;
         Life = maxLife;
-        curStrength = 1;
+        curStrength = 0;
         SpawnEnemies(1,false);
         
         DontDestroyOnLoad(this);
@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
                 Vector2 pos = new Vector2(i*(1+padding), j*(1+padding)) - offset + spawnPostion;
                 GameObject tmp = Instantiate(enemy, pos , Quaternion.identity);
                 var deb = tmp.GetComponent<Enemy>();
+                
                 int tmpInt = random ? Random.Range(0, str + 1) : str;
                 deb.SetStats(types[Mathf.Clamp(tmpInt, 0, 2)]);
                 allEnemies.Add(deb);
@@ -113,12 +114,13 @@ public class GameManager : MonoBehaviour
     private void LoadNextScene()
     {
         curStrength += 0.5f;
+        if (curStrength > 3.75) curStrength = 3;
         foreach (Enemy e in allEnemies)
         {   
             Destroy(e.gameObject);
         }
         allEnemies = new List<Enemy>();
-        SpawnEnemies((int)curStrength, curStrength%1 != 0);
+        SpawnEnemies((int)curStrength, curStrength%1 == 0);
     }
     
     private void OnPlayerHitMethod()

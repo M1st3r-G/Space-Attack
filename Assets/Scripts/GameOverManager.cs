@@ -32,10 +32,6 @@ public class GameOverManager : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnGameOver -= OnGameOver;
-        activate.action.performed -= Activate;
-        activate.action.Disable();
-        navigate.action.Disable();
-        
     }
 
     private void Navigate(InputAction.CallbackContext ctx)
@@ -65,7 +61,12 @@ public class GameOverManager : MonoBehaviour
         leaderboardText.text = tmp;
         cg.alpha = 0;
         leaderboard.alpha = 1;
-        Invoke(nameof(Application.Quit), 5f);
+        
+        activate.action.performed -= Activate;
+        navigate.action.performed -= Navigate;
+        activate.action.Disable();
+        navigate.action.Disable();
+
     }
 
     private string GetName()
