@@ -60,10 +60,14 @@ public class GameManager : MonoBehaviour
             return;
         }
         _instance = this;
-
-        PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player1", pairWithDevice: Keyboard.current);
-        PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player2", pairWithDevice: Keyboard.current);
         
+        PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player1", pairWithDevice: Keyboard.current);
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player2", pairWithDevice: Keyboard.current);
+        }
+
         allEnemies = new List<Enemy>();
         Points = 0;
         Life = maxLife;
