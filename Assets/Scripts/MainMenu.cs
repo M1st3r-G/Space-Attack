@@ -10,11 +10,17 @@ public class MainMenu : MonoBehaviour
     public GameObject[] text;
     public bool start;
     public bool quit;
+    public bool coop;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (start)
         {
             SceneManager.LoadScene(1);
+        }
+        
+        if (coop)
+        {
+            SceneManager.LoadScene(2);
         }
 
         if (quit)
@@ -40,4 +46,6 @@ public class MainMenu : MonoBehaviour
             Destroy(text[2]);
         }
     }
+
+    
 }
