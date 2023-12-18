@@ -49,6 +49,7 @@ MonoBehaviour:
   lifeText: {fileID: 0}
   pointsText: {fileID: 0}
   quit: {fileID: 3485188327224203227, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
+  defaultPlayer: {fileID: 8452292857689064501, guid: c237f9d5faa9a7a428ab35202a9d835f, type: 3}
   grid: {x: 5, y: 2}
   spawnPostion: {x: 0, y: 3}
   padding: 0.5

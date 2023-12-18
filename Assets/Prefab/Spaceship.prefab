@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3170695082853762857}
   - component: {fileID: 2205921007624497915}
   - component: {fileID: 5355927627562876191}
+  - component: {fileID: 5770628682797310195}
   m_Layer: 3
   m_Name: Spaceship
   m_TagString: Player
@@ -161,11 +162,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da845fd163db33f4d8304e09e86d13e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 7750783468444634963, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
-  shoot: {fileID: -6610828042698446550, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
+  playerExplosion: {fileID: 4015897546633619165, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
+  playerBullet: {fileID: 3553346205418886274, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
   speed: 3
   yOffset: 0.5
   ShootCooldown: 0.5
   invisTimer: 0.5
-  playerBullet: {fileID: 3553346205418886274, guid: 4b57df2376a78de459b34141e12e2ae8, type: 3}
-  playerExplosion: {fileID: 4015897546633619165, guid: 344c1196a750d294a8431735075b3d3e, type: 3}
+--- !u!114 &5770628682797310195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452292857689064501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 9db2e6d0cb7a84c4fa783d45f1331a3f, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5355927627562876191}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9a3448eb-64c3-41c9-ad8e-153af98e5a1d
+    m_ActionName: Player/Movement[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5355927627562876191}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eaa3c106-439e-4ae6-8f34-edaa06f427c3
+    m_ActionName: Player/Shoot[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cabbf02b-eb0a-47eb-875d-780ab9e8a010
+    m_ActionName: Player/Quit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 791b417b-0db8-4b5b-9a1a-29b2281a7f6a
+    m_ActionName: LeaderBoard/Navigate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 181c9455-eeb2-4888-bf15-895b4627e035
+    m_ActionName: LeaderBoard/Activate[/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

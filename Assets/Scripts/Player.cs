@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
 {
     //ComponentReferences
     private Rigidbody2D rb;
-    [SerializeField] private InputActionReference movement;
-    [SerializeField] private InputActionReference shoot;
     [SerializeField] private GameObject playerExplosion;
     [SerializeField] private GameObject playerBullet;
     //Params
@@ -19,6 +17,7 @@ public class Player : MonoBehaviour
     //Temps
     private bool canShoot;
     private bool invincible;
+    private float Direction;
     //Publics
     public static event Action OnPlayerHit; 
      
@@ -28,27 +27,19 @@ public class Player : MonoBehaviour
         canShoot = true;
         invincible = false;
     }
-
-    private void OnEnable()
-    {
-        movement.action.Enable();
-        shoot.action.Enable();
-        shoot.action.performed += Shoot;
-    }
-
-    private void OnDisable()
-    {
-        movement.action.Disable();
-        shoot.action.performed -= Shoot;
-        shoot.action.Disable();
-    }
+    
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(movement.action.ReadValue<float>() * speed, 0);
+        rb.velocity = new Vector2(Direction * speed, 0);
     }
 
-    private void Shoot(InputAction.CallbackContext ctx)
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        Direction = ctx.ReadValue<float>(); 
+    }
+
+    public void OnShoot(InputAction.CallbackContext ctx)
     {
         if (!canShoot) return;
         Instantiate(playerBullet, transform.position + new Vector3(0,yOffset,0), Quaternion.identity);

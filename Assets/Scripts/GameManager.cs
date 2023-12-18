@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private TextMeshProUGUI pointsText;
     [SerializeField] private InputActionReference quit;
+    [SerializeField] private GameObject defaultPlayer;
     //Params
     [SerializeField] private Vector2Int grid;
     [SerializeField] private Vector2 spawnPostion;
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour
             return;
         }
         _instance = this;
+
+        PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player1", pairWithDevice: Keyboard.current);
+        PlayerInput.Instantiate(defaultPlayer, controlScheme: "Player2", pairWithDevice: Keyboard.current);
         
         allEnemies = new List<Enemy>();
         Points = 0;
